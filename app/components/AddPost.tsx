@@ -17,7 +17,8 @@ export default function AddPost() {
     {
       onSuccess: (data) => {
         toast.success("Post created", { id: toastPostId });
-        queryClient.invalidateQueries(["allPosts"]); // refetch all posts
+        queryClient.invalidateQueries(["allPosts"]);
+        queryClient.invalidateQueries(["myPosts"]);
         setToastPostId("");
         setTitle("");
         setIsDisabled(false);

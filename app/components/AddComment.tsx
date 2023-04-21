@@ -18,7 +18,9 @@ export default function AddComment({ id }: { id: string }) {
     {
       onSuccess: (data) => {
         toast.success("Comment added", { id: toastCommentId });
-        queryClient.invalidateQueries(["postDetails"]); // refetch all posts
+        queryClient.invalidateQueries(["postDetails"]);
+        queryClient.invalidateQueries(["allPosts"]);
+        queryClient.invalidateQueries(["myPosts"]);
         setToastCommentId("");
         setComment("");
         setIsDisabled(false);

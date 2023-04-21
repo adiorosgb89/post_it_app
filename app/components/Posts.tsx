@@ -31,6 +31,7 @@ export default function Post({ post, myPosts }: Props) {
       onSuccess: () => {
         toast.success("Post deleted successfully", { id: toastPostId });
         queryClient.invalidateQueries(["myPosts"]);
+        queryClient.invalidateQueries(["allPosts"]);
         setIsDeleteModalOpen(false);
         setToastPostId("");
       },
