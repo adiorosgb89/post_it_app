@@ -4,6 +4,7 @@ import AddPost from "./components/AddPost";
 import { useQuery } from "@tanstack/react-query";
 import Post from "./components/Posts";
 import { Post as PostInterface } from "./types/interfaces";
+import { useEffect } from "react";
 
 const allPosts = async () => {
   const response = await axios.get("/api/posts/getPosts");
@@ -11,10 +12,10 @@ const allPosts = async () => {
 };
 
 export default function Home() {
-  const { data, isLoading, isError } = useQuery<PostInterface[]>({
+  const { data, isLoading, isError, refetch } = useQuery<PostInterface[]>({
     queryKey: ["allPosts"],
     queryFn: allPosts,
-    refetchOnMount: "always",
+    refetchInterval: 1000,
   });
 
   if (isError) return <p>Error</p>;
