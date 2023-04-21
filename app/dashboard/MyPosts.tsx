@@ -14,6 +14,7 @@ export default function MyPosts() {
   const { data, isLoading, isError } = useQuery<User>({
     queryKey: ["myPosts"],
     queryFn: myPosts,
+    staleTime: Infinity,
   });
 
   if (isError) return <p>Error</p>;

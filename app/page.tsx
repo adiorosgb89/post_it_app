@@ -14,6 +14,7 @@ export default function Home() {
   const { data, isLoading, isError } = useQuery<PostInterface[]>({
     queryKey: ["allPosts"],
     queryFn: allPosts,
+    staleTime: Infinity,
   });
 
   if (isError) return <p>Error</p>;
