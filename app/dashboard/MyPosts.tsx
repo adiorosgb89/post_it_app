@@ -14,7 +14,7 @@ export default function MyPosts() {
   const { data, isLoading, isError } = useQuery<User>({
     queryKey: ["myPosts"],
     queryFn: myPosts,
-    refetchOnMount: true,
+    refetchOnMount: "always",
   });
 
   if (isError) return <p>Error</p>;

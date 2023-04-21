@@ -22,7 +22,7 @@ export default function PostDetail(url: URL) {
   const { data, isLoading, isError } = useQuery<PostInterface>({
     queryKey: ["postDetails"],
     queryFn: () => getDetails(url.params.slug),
-    refetchOnMount: true,
+    refetchOnMount: "always",
   });
 
   if (isError) return <p>Error</p>;
