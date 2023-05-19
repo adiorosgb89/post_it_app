@@ -25,7 +25,8 @@ export default function AddPost() {
       },
       onError: (err) => {
         if (err instanceof AxiosError) {
-          toast.error("Post could not be created", { id: toastPostId });
+          const { error } = err.response?.data;
+          toast.error(error, { id: toastPostId });
         }
         setToastPostId("");
       },
